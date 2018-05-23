@@ -28,10 +28,13 @@ const signout = (req, res, next) => {
     res.status(200).json('Session has been destroyed.');
 
 
-}
+};
+
+
 
 module.exports = {
   getUser,
   login,
-  signout
+  signout,
+
 };

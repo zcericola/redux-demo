@@ -33,7 +33,7 @@ class Films extends Component {
   }
 }
 const mapStateToProps = state => {
-  return state;
+  return state.filmReducer;
 };
 
 export default connect(mapStateToProps, { getFilms, addFilm })(Films);

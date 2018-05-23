@@ -31,6 +31,7 @@ app.post( '/api/login', mainCtrl.login );
 app.get('/api/user', mainCtrl.getUser);
 app.post('/api/signout', mainCtrl.signout);
 
+
 //Checking that server is running
 app.listen(port, () => {
 console.log('Avast ye scurvy dogs! We be pulling into port ' + port);
