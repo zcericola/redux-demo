@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getFilms, addFilm } from "../ducks/filmsReducer";
-import "./Films.css";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getFilms, addFilm } from '../ducks/filmsReducer';
+import './Films.css';
 
 class Films extends Component {
   componentDidMount() {
@@ -9,8 +9,7 @@ class Films extends Component {
   }
   render() {
     let filmsList;
-    //console logging my films array that should now have my data -- I called for it in componentDidMount
-    // console.log("films: ", this.props.films.data);
+
     console.log(this.props);
     if (this.props.films !== undefined && this.props.films.length !== 0) {
       filmsList = this.props.films.data.map((curr, index) => {
@@ -33,7 +32,10 @@ class Films extends Component {
   }
 }
 const mapStateToProps = state => {
-  return state;
+  return state.filmsReducer;
 };
 
-export default connect(mapStateToProps, { getFilms, addFilm })(Films);
+export default connect(
+  mapStateToProps,
+  { getFilms, addFilm }
+)(Films);
