@@ -1,14 +1,14 @@
-import axios from "axios";
+import axios from 'axios';
 
 //CONSTANTS
-const GET_PEOPLE = "GET_PEOPLE";
+const GET_PEOPLE = 'GET_PEOPLE';
 
 //ACTION CREATORS
 //getting all the films from the API here, notice I don't have to use .then --Asynch Redux takes care of this for us
 export function getPeople() {
   return {
     type: GET_PEOPLE,
-    payload: axios.get("https://ghibliapi.herokuapp.com/people")
+    payload: axios.get('https://ghibliapi.herokuapp.com/people')
   };
 }
 
@@ -26,21 +26,23 @@ export default function peopleReducer(state = initialState, action) {
   switch (action.type) {
     //GET_FILMS
     case `GET_PEOPLE_PENDING`:
-      return Object.assign({}, state, { isLoading: true });
+      return { ...state, isLoading: true };
 
     case `GET_PEOPLE_FULFILLED`:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoading: false,
         people: action.payload
-      });
+      };
 
     case `GET_PEOPLE_REJECTED`:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoading: false,
         error: action.payload
-      });
-//You should always have some kind of default action, a fallback in case nothing else is triggered in the switch statement. Usually it would be to just return state;
+      };
+    //You should always have some kind of default action, a fallback in case nothing else is triggered in the switch statement. Usually it would be to just return state;
     default:
       return state;
   }
-};
+}
